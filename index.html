@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>For Anisha ❤️</title>
+
   <style>
     body {
       margin: 0;
       height: 100vh;
-      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #ffd6e8, #fff0f5);
       display: flex;
-      align-items: center;
       justify-content: center;
-      text-align: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
     }
 
     .container {
@@ -22,6 +23,8 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       max-width: 650px;
       width: 90%;
+      text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -32,7 +35,6 @@
     button {
       padding: 12px 30px;
       font-size: 18px;
-      margin: 10px;
       border: none;
       border-radius: 25px;
       cursor: pointer;
@@ -41,11 +43,14 @@
     #yesBtn {
       background-color: #ff4d6d;
       color: white;
+      margin-right: 20px;
     }
 
     #noBtn {
       background-color: #adb5bd;
       color: white;
+      position: absolute;
+      transition: left 0.25s ease, top 0.25s ease;
     }
 
     #content {
@@ -66,6 +71,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -98,14 +104,41 @@
 <script>
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
-  const buttons = document.getElementById("buttons");
   const content = document.getElementById("content");
+  const buttons = document.getElementById("buttons");
   const question = document.getElementById("question");
   const song = document.getElementById("song");
 
-  // Romantic part starts at 36 seconds
+  // Song romantic part starts at 36 seconds
   const START_TIME = 36;
 
+  // Initial NO button position
+  noBtn.style.left = "60%";
+  noBtn.style.top = "65%";
+
+  function moveNoButton() {
+    const padding = 40;
+    const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+    const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+    const moveX = Math.random() * 200 - 100;
+    const moveY = Math.random() * 200 - 100;
+
+    let newX = noBtn.offsetLeft + moveX;
+    let newY = noBtn.offsetTop + moveY;
+
+    newX = Math.max(padding, Math.min(maxX, newX));
+    newY = Math.max(padding, Math.min(maxY, newY));
+
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+  }
+
+  // NO button dodges politely
+  noBtn.addEventListener("mouseenter", moveNoButton);
+  noBtn.addEventListener("mousedown", moveNoButton);
+
+  // YES button behavior
   yesBtn.addEventListener("click", () => {
     question.style.display = "none";
     buttons.style.display = "none";
@@ -113,10 +146,6 @@
 
     song.currentTime = START_TIME;
     song.play();
-  });
-
-  noBtn.addEventListener("click", () => {
-    alert("Nice try. Click Yes 🙂");
   });
 </script>
 
