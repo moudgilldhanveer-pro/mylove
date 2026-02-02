@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Anisha ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff0f5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      max-width: 650px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #adb5bd;
+      color: white;
+    }
+
+    #content {
+      display: none;
+      margin-top: 30px;
+    }
+
+    #content img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 id="question">Will you be my Valentine, Anisha? ❤️</h1>
+
+  <div id="buttons">
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <div id="content">
+    <img src="love.gif" alt="Love GIF">
+    <p>
+      You’re the best, Anu. I love you more than anything, and I feel incredibly lucky
+      to be tumhare sath for our third Valentine’s together.<br><br>
+
+      Three years of us choosing each other, growing, dher saari ladaiyan, laughing,
+      crying, and standing side by side.<br><br>
+
+      To explain us even words are very less, but I know when we are together and spend
+      time together, I feel the best.<br><br>
+
+      I miss you boht and I love you dheerrrr sara anu ❤️
+    </p>
+  </div>
+
+  <audio id="song" src="song.mp3"></audio>
+</div>
+
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const buttons = document.getElementById("buttons");
+  const content = document.getElementById("content");
+  const question = document.getElementById("question");
+  const song = document.getElementById("song");
+
+  // Romantic part starts at 36 seconds
+  const START_TIME = 36;
+
+  yesBtn.addEventListener("click", () => {
+    question.style.display = "none";
+    buttons.style.display = "none";
+    content.style.display = "block";
+
+    song.currentTime = START_TIME;
+    song.play();
+  });
+
+  noBtn.addEventListener("click", () => {
+    alert("Nice try. Click Yes 🙂");
+  });
+</script>
+
+</body>
+</html>
